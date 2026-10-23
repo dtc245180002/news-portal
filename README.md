@@ -78,7 +78,7 @@ docker-compose ps
 ## 5. Giám sát (Prometheus + Grafana) & Truy vấn Log (LogQL)
 
 ### 5.1. Các Grafana Dashboard sử dụng (Data source: `http://prometheus:9090`)
-- **Giám sát Docker Containers (cAdvisor):** Import Dashboard ID `` (hoặc `193`)
+- **Giám sát Docker Containers (cAdvisor):** Import Dashboard ID `21743` (hoặc `193`)
 - **Giám sát Web Server (Nginx Exporter):** Import Dashboard ID `12708`
 - **Giám sát Database (MySQLd Exporter):** Import Dashboard ID `7362`
 
