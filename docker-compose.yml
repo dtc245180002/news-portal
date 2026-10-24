@@ -13,7 +13,6 @@ services:
       - ./mysql-init:/docker-entrypoint-initdb.d:ro
     networks:
       - backend_net
-      - monitoring_net
     security_opt:
       - no-new-privileges:true
 
@@ -51,7 +50,7 @@ services:
       PMA_USER: ${MYSQL_USER}
       PMA_PASSWORD: ${MYSQL_PASSWORD}
     ports:
-      - "8081:80"
+      - "127.0.0.1:8081:80"
     networks:
       - backend_net
     security_opt:
@@ -72,7 +71,6 @@ services:
       - nginx_logs:/var/log/nginx
     networks:
       - frontend_net
-      - monitoring_net
     security_opt:
       - no-new-privileges:true
 
@@ -129,7 +127,7 @@ services:
       - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
       - prometheus_data:/prometheus
     ports:
-      - "9090:9090"
+      - "127.0.0.1:9090:9090"
     networks:
       - monitoring_net
     security_opt:
@@ -141,12 +139,12 @@ services:
     restart: unless-stopped
     user: "472:472"
     environment:
-      - GF_SECURITY_ADMIN_USER=admin
-      - GF_SECURITY_ADMIN_PASSWORD=Grafana@Admin2026!
+      GF_SECURITY_ADMIN_USER: ${GRAFANA_ADMIN_USER}
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD}
     volumes:
       - grafana_data:/var/lib/grafana
     ports:
-      - "3000:3000"
+      - "127.0.0.1:3000:3000"
     networks:
       - monitoring_net
     security_opt:
@@ -157,8 +155,6 @@ services:
     container_name: news_loki
     restart: unless-stopped
     user: "10001:10001"
-    ports:
-      - "3100:3100"
     volumes:
       - ./loki/loki-config.yml:/etc/loki/local-config.yaml:ro
     command: -config.file=/etc/loki/local-config.yaml
