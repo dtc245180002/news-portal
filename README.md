@@ -539,4 +539,3 @@ Có thể sử dụng danh sách dưới đây để nghiệm thu hệ thống:
 
 ---
 
-**Ghi chú:** Các địa chỉ IP, tên tài khoản, đường dẫn, tên nhãn log và các thông số cấu hình trong tài liệu cần được đối chiếu với môi trường triển khai thực tế trước khi sử dụng làm tài liệu nghiệm thu hoặc báo cáo cuối cùng.
